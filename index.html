@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arya Samal's Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e40af, #6b21a8);
+            z-index: -1;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem 1rem; /* added horizontal padding for mobile */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 100%; /* Ensure no overflow on small screens */
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+        nav a {
+            color: #1e40af;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+        nav a:hover {
+            color: #f97316;
+            transform: scale(1.1);
+        }
+        .btn {
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: linear-gradient(to right, #f97316, #facc15);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: white;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .parallax-card {
+            transform: translateY(0);
+            transition: transform 0.1s ease-out;
+        }
+        .skill-badge {
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 1rem;
+            margin: 0.5rem;
+            font-weight: 500;
+            transition: transform 0.3s, box-shadow 0.3s;
+            white-space: nowrap; /* prevent wrapping on small devices */
+        }
+        .skill-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.5rem 1rem;
+            }
+            nav a {
+                padding: 0.75rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            .section {
+                padding: 2rem 1rem;
+            }
+            .content h1 {
+                font-size: 2.5rem;
+            }
+            .content h2 {
+                font-size: 2rem;
+            }
+            .content p {
+                font-size: 1rem;
+            }
+            .project-card {
+                margin: 0 0.5rem;
+                width: 100% !important; /* force full width */
+            }
+            .grid {
+                grid-template-columns: 1fr !important; /* single column grid */
+            }
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles.js Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="flex justify-center space-x-4 sm:space-x-6 py-4 flex-wrap">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="overlay"></div>
+        <div class="content animate-on-scroll">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Arya Samal's Portfolio</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mb-6">Hey, I'm Arya, a tech enthusiast crafting innovative digital experiences!</p>
+            <a href="#contact" class="btn">Let's Connect</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="overlay"></div>
+        <div class="content animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+            <p class="text-lg md:text-xl max-w-2xl mb-6">I'm Arya Samal, a passionate developer with a flair for turning ideas into reality. From building sleek, user-friendly websites to pioneering futuristic hand gesture tech, I thrive on blending creativity with code. My mission is to create impactful solutions that inspire and innovate!</p>
+            <div class="flex flex-wrap justify-center">
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">HTML</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">SQL</span>
+            </div>
+            <img
+                src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                alt="Arya Samal"
+                class="mt-6 rounded-lg shadow-lg animate-on-scroll"
+                style="max-width: 300px; width: 100%; height: auto;"
+            />
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="overlay"></div>
+        <div class="content animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <div class="text-gray-800 p-6 rounded-lg shadow-lg project-card parallax-card animate-on-scroll" data-parallax-speed="0.2">
+                    <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Hand Gesture Technology" class="mb-4 rounded-lg w-full" />
+                    <h3 class="text-xl font-semibold">Hand Gesture Technology</h3>
+                    <p>A cutting-edge mini project using Python and computer vision to control apps with intuitive hand gestures.</p>
+                    <br>
+                    <br>
+                    <br>
+                    
+
+                </div>
+                <div class="text-gray-800 p-6 rounded-lg shadow-lg project-card parallax-card animate-on-scroll" data-parallax-speed="0.15">
+                    <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Weather App" class="mb-4 rounded-lg w-full" />
+                    <h3 class="text-xl font-semibold">Weather App</h3>
+                    <p>A stylish web app built with HTML, CSS, and JavaScript, delivering real-time weather updates with a clean UI.</p>
+                </div>
+                <div class="text-gray-800 p-6 rounded-lg shadow-lg project-card parallax-card animate-on-scroll" data-parallax-speed="0.1">
+                    <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="To-Do List App" class="mb-4 rounded-lg w-full" />
+                    <h3 class="text-xl font-semibold">To-Do List App</h3>
+                    <p>A responsive app using HTML, CSS, JavaScript, and SQL to keep users organized with a sleek interface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="overlay"></div>
+        <div class="content animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h2>
+            <p class="text-lg md:text-xl max-w-2xl mb-6">
+                Let's create something awesome! Reach me at
+                <a href="mailto:Aryasamal12222@gmail.com" class="underline text-yellow-300">Aryasamal12222@gmail.com</a>
+                or connect on
+                <a href="https://www.linkedin.com/in/arya-samal-080441234/" target="_blank" class="underline text-yellow-300">LinkedIn</a>.
+            </p>
+            <img
+                src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80 "
+                alt="Contact Image"
+                class="mt-6 rounded-lg shadow-lg animate-on-scroll"
+                style="max-width: 200px; width: 100%; height: auto;"
+            />
+        </div>
+    </section>
+
+    <!-- Particles.js and Parallax Script -->
+    <script>
+        // Particles.js Configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800,
+                    },
+                },
+                color: { value: "#ffffff" },
+                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 4,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true,
+                },
+            },
+            retina_detect: true,
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth",
+                });
+            });
+        });
+
+        // Scroll Animation Trigger
+        const animateElements = document.querySelectorAll(".animate-on-scroll");
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        animateElements.forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Parallax Effect for Project Cards
+        const parallaxCards = document.querySelectorAll(".parallax-card");
+        window.addEventListener("scroll", () => {
+            parallaxCards.forEach((card) => {
+                const speed = parseFloat(card.getAttribute("data-parallax-speed"));
+                const rect = card.getBoundingClientRect();
+                const scrollPosition = window.scrollY;
+                const offset = rect.top + scrollPosition - window.innerHeight / 2;
+                const translateY = offset * speed;
+
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    card.style.transform = `translateY(${translateY}px) scale(1)`;
+                } else {
+                    card.style.transform = `translateY(${translateY}px) scale(0.95)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
